@@ -4,6 +4,7 @@ Mission Statement: Colors are hard if you do not know what you are doing. They a
 
 TO LAUNCH WEBSITE:
 Download files in folder WebsiteStuff and drag into new tab in browser of your choice to launch page
+
 Update March 5:
   - We updated and revised deliverable 0 with the feedback provided.
   - We completed all of the tasks in deliverable 1:
