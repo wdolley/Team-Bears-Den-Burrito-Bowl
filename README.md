@@ -4,11 +4,11 @@ Mission Statement: Colors are hard if you do not know what you are doing. They a
 Update March 5:
   - We updated and revised deliverable 0 with the feedback provided.
   - We completed all of the tasks in deliverable 1:
-              * The product backlog was created and updated based on our progress during the meeting.
-              * The Sprint backlog was created and updated based on our progress during the meeting.
-              * Kanban was created in our GitHub and appropriate goals were posted.
-              * Sprint Review, was completed based on our progress during the meeting.
-              * Worked on a Python script for sorting through minecraft textures.
-                - filtered out all transparent textures
-                - removed some files that would not work
-                - cropped files to 16x16 (magma blocks are a texture that is a different size)
+    - The product backlog was created and updated based on our progress during the meeting.
+    - The Sprint backlog was created and updated based on our progress during the meeting.
+    - Kanban was created in our GitHub and appropriate goals were posted.
+    - Sprint Review, was completed based on our progress during the meeting.
+    - Worked on a Python script for sorting through minecraft textures.
+      - filtered out all transparent textures
+      - removed some files that would not work
+      - cropped files to 16x16 (magma blocks are a texture that is a different size)
