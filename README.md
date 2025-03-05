@@ -8,3 +8,7 @@ Update March 5:
               * The Sprint backlog was created and updated based on our progress during the meeting.
               * Kanban was created in our GitHub and appropriate goals were posted.
               * Sprint Review, was completed based on our progress during the meeting.
+              * Worked on a Python script for sorting through minecraft textures.
+                - filtered out all transparent textures
+                - removed some files that would not work
+                - cropped files to 16x16 (magma blocks are a texture that is a different size)
