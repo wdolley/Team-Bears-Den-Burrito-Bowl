@@ -5,6 +5,14 @@ Mission Statement: Colors are hard if you do not know what you are doing. They a
 TO LAUNCH WEBSITE:
 Download files in folder WebsiteStuff and drag into new tab in browser of your choice to launch page
 
+Update March 12:
+  - Worked on circle generator tool (Addam)
+  - Completed Sprint Backlog (Kenny)
+  - Quality checked Sprint Backlog (Owen)
+  - Revised Deliverable 1 (Everyone)
+  - Made Kanban Tasks (Will)
+  - Quality cheked revisions (Everyone)
+
 Update March 5:
   - We updated and revised deliverable 0 with the feedback provided.
   - We completed all of the tasks in deliverable 1:
@@ -17,3 +25,4 @@ Update March 5:
       - removed some files that would not work
       - cropped files to 16x16 (magma blocks are a texture that is a different size)
       - Sourced Minecraft textures (Will)
+
