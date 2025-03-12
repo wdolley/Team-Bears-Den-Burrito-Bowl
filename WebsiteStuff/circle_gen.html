@@ -12,12 +12,52 @@
 	<div id='container'>
 		<header>
 			<h1>Circle Generator</h1>
+			<div>
+				<p>Generate a circle with a specific radius and color!</p>
+				<form id="circle-form">
+					<input type="radio" id="Circle" name="Type button" value="Circle">
+					<label for="circle">Circle</label><br>
+					<input type="radio" id="Ellipse" name="Type button" value="Ellipse">
+					<label for="Ellipse">Ellipse</label><br>
+					<label for="radius">Radius:</label>
+					<input type="number" id="radius" name="radius" min="1" max="100"><br>
+					<label for="Width">Width:&nbsp</label>
+					<input type="number" id="width" name="width" min="1" max="100"><br>
+					<label for="Height">Height:</label>
+					<input type="number" id="height" name="height" min="1" max="100"><br>
+					<button type="submit" onclick="GenerateCircle()">Generate Circle</button>
+					<script>
+						function GenerateCircle() {
+							// Get the values from the inputs 
+							var radius = document.getElementById("radius").value;
+							var width = document.getElementById("width").value;
+							var height = document.getElementById("height").value;
+							var type = document.querySelector('input[name="Type button"]:checked').value;
+							var arr = [];
+							// Create the circle
+							for(var i = 0; i <= radius; i++) {
+								var row = [];
+								for(var j = 0; j <= radius; j++) {
+									if(Math.sqrt(Math.pow(i, 2) + Math.pow(j, 2)) <= radius) {
+										row.push("X");
+									} else {
+										row.push(" ");
+									}
+								}
+								arr.push(row);
+							}
+							// Print the circle
+							console.log(arr);
+						}
+					</script>
+				</form>
+			</div>
 			
 			<nav>
 				<ul class="nav">
 					<li><a href="index.html">Builders Block</a></li>
 					<li><a href="palette.html">Palettes</a></li>
-					<li><a href="cirle_gen.html" class="active">Circle Generator</a></li>
+					<li><a href="circle_gen.html" class="active">Circle Generator</a></li>
 				</ul>
 			</nav>
 		</header>
