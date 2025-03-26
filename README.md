@@ -27,4 +27,11 @@ Update March 5:
       - Sourced Minecraft textures (Will)
   
 Update March 26:
-
+  -Worked on deliverable 2 requirements
+    -SRS completed and quality checked 
+      -Updated UI mockups
+      -Updated User stories (added new ones and deleted unneccesary ones)
+    -Completed sprint backlog 2
+      -Added circle generator and documentation
+    -Kanban tasks added
+    
