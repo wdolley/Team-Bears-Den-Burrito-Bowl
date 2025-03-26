@@ -1,26 +1,44 @@
 <!doctype HTML>
-<html lang='en'> <!--default language of the html-->
+<html lang="en">
 <head>
-	<meta charset="UTF-8"> <!--accessible on every device-->
+	<meta charset="UTF-8"> 
 	<meta name="description" content=" ">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>buildersblock</title> <!--title of website url-->
+	<title>Builders Block</title>
 	<link rel="stylesheet" href="styles.css">
+	<script src="scripts.js"></script>
 </head>
 
 <body>
-	<div id='container'>
+	<div id="container">
 		<header>
-			<h1>Builders Block</h1>
-			<p>Your ultimate toolkit for creative building and design inspiration!</p>
-			
-			<nav>
-				<ul class="nav">
-					<li><a href="index.html" class="active">Builders Block</a></li>
-					<li><a href="palette.html">Palettes</a></li>
-					<li><a href="circle_gen.html">Circle Generator</a></li>
-				</ul>
-			</nav>
+			<div class="top-bar">
+				<a href="index.html" class="logo">Builders Block</a>
+				<nav>
+					<ul class="nav">
+						<li><a href="index.html" class="active">Builders Block</a></li>
+						<li><a href="palette.html">Palettes</a></li>
+						<li><a href="circle_gen.html">Circle Generator</a></li>
+						<li class="profile">
+							<a href="#" class="profile-link">
+								<img src="../assets/profile.png" alt="Profile" class="profile-icon">
+								<span>Profile</span>
+							</a>
+							<div class="dropdown-menu">
+								<a href="login.html">Login</a>
+								<a href="saved_palettes.html">Saved Palettes</a>
+								<a href="logout.html">Logout</a>
+							</div>
+						</li>
+					</ul>
+				</nav>
+			</div>
 		</header>
 
-<h2 class="index-h2">	
+		<main>
+			<h2 class="index-h2">Welcome to Builders Block</h2>
+			<p class="tagline">Your ultimate toolkit for creative building and design inspiration!</p>
+		</main>
+	</div>
+</body>
+</html>
