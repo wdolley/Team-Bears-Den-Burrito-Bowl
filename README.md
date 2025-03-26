@@ -5,6 +5,20 @@ Mission Statement: Colors are hard if you do not know what you are doing. They a
 TO LAUNCH WEBSITE:
 Download files in folder WebsiteStuff and drag into new tab in browser of your choice to launch page
 
+Update March 26:
+  - Worked on deliverable 2 requirements. (Everyone)
+    - SRS completed and quality checked: (Everyone)
+      - Updated UI mockups.
+      - Updated User stories. (added new ones and deleted unneccesary ones)
+    - Completed sprint backlog 2:
+      - Added circle generator and documentation. (Addam)
+    - Kanban tasks added (Kenny)
+    - Updated Sprint Backlog
+    - Completed Use Case Diagrams/Models and Descriptions (Addam and Kylie)
+    - Completed Sprint Review
+    - Created Architecture Design 
+    - Quality checked revisions (Everyone)
+  
 Update March 12:
   - Worked on circle generator tool (Addam)
   - Completed Sprint Backlog (Kenny)
@@ -26,12 +40,5 @@ Update March 5:
       - cropped files to 16x16 (magma blocks are a texture that is a different size)
       - Sourced Minecraft textures (Will)
   
-Update March 26:
-  - Worked on deliverable 2 requirements.
-    - SRS completed and quality checked: 
-      - Updated UI mockups.
-      - Updated User stories. (added new ones and deleted unneccesary ones)
-    - Completed sprint backlog 2:
-      - Added circle generator and documentation.
-    - Kanban tasks added
+
     
