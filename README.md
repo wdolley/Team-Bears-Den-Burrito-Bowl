@@ -25,4 +25,6 @@ Update March 5:
       - removed some files that would not work
       - cropped files to 16x16 (magma blocks are a texture that is a different size)
       - Sourced Minecraft textures (Will)
+  
+Update March 26:
 
