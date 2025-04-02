@@ -10,15 +10,14 @@ body {
 
 #container {
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    margin: 0;
 }
 
 header {
     background: url('https://www.minecraft.net/content/dam/minecraftnet/promo/mc-dirt-bg.jpg');
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     padding: 15px 20px;
-    border-bottom: 5px solid #654321;
+    /*border-bottom: 5px solid #654321;*/
 }
 
 .logo {
@@ -35,14 +34,16 @@ header {
 
 .nav {
     list-style: none;
-    margin: 0;
-    padding: 0;
+    margin: 0 auto;
+    padding: 10;
     display: flex;
     gap: 30px;
     justify-content: center;
     background: rgba(0, 0, 0, 0.6);
     padding: 10px;
     border-radius: 10px;
+    width: 80%;
+    max-width:1200px;
 }
 
 .nav li a {
@@ -63,13 +64,15 @@ header {
 }
 
 .profile {
+    position: relative;
     display: flex;
     align-items: center;
-    margin-left: 10px;
+    margin-left: 200px;
     background: rgba(0, 0, 0, 0.5);
     padding: 5px 10px;
     border-radius: 5px;
 }
+
 
 .profile-icon {
     width: 40px;
@@ -161,7 +164,13 @@ section, article {
 
 .dropdown-menu {
     display: none;
-    position: absolute; 
-    background: white;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #ffcc00;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    z-index: 1000;
 }
+
