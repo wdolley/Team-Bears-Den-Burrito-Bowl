@@ -1,4 +1,4 @@
-<!doctype HTML>
+<!doctype HTML> <!--includes login html portion-->
 <html lang="en">
 <head>
 	<meta charset="UTF-8"> 
@@ -7,7 +7,6 @@
 	<title>Builders Block</title>
 	<link rel="stylesheet" href="styles.css">
 	<script src="scripts.js" defer></script>
-
 </head>
 
 <body>
@@ -26,7 +25,7 @@
 								<span>Profile</span>
 							</a>
 							<div class="dropdown-menu">
-								<a href="login.html">Login</a>
+								<a href="#" id="login-link">Login</a>
 								<a href="saved_palettes.html">Saved Palettes</a>
 								<a href="sign_up.html">Sign up</a>
 								<a href="logout.html">Logout</a>
@@ -43,5 +42,36 @@
 			<h3 class="index-h3">Featured Palettes</h3>
 		</main>
 	</div>
+
+	<!-- Login Modal -->
+	<div id="login-modal" class="modal">
+		<div class="modal-content">
+			<span class="close-btn">&times;</span>
+			<h2>Login</h2>
+			<form id="login-form">
+				<div class="form-group">
+					<label for="username">Username:</label>
+					<input type="text" id="username" name="username" required>
+				</div>
+				<div class="form-group">
+					<label for="password">Password:</label>
+					<input type="password" id="password" name="password" required>
+				</div>
+				<button type="submit">Login</button>
+			</form>
+		</div>
+	</div>
+	
+	<!--login error popup-->
+	<div id="error-modal" class="modal">
+		<div class="modal-content">
+			<span class="close-btn" id="close-error-btn">&times;</span>
+			<h2>Invalid Credentials</h2>
+			<p id="error-message">Your username or password is incorrect. Please try again.</p>
+			<a href="sign_up.html" id="signup-link" style="display: none;">Sign up here</a>
+		</div>
+	</div>
+</body>
+</html>
 </body>
 </html>
