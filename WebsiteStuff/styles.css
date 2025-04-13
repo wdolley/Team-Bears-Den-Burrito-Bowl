@@ -174,3 +174,166 @@ section, article {
     z-index: 1000;
 }
 
+/* for login*/
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+	background-color: white;
+	margin: 15% auto;
+	padding: 20px;
+	width: 300px;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	text-align: center;
+}
+
+.close-btn {
+	float: right;
+	font-size: 20px;
+	cursor: pointer;
+	color: #000;
+}
+
+.form-group {
+	display: flex;
+	align-items: center;
+	margin-bottom: 15px;
+}
+
+.form-group label {
+	width: 100px;
+	text-align: left;
+	margin-right: 10px;
+}
+
+.form-group input {
+	width: 150px;
+	padding: 8px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+button {
+	padding: 10px 20px;
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #45a049;
+}
+
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+	background-color: white;
+	margin: 15% auto;
+	padding: 20px;
+	width: 300px;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	text-align: center;
+}
+
+.close-btn {
+	float: right;
+	font-size: 20px;
+	cursor: pointer;
+	color: #000;
+}
+
+.form-group {
+	display: flex;
+	align-items: center;
+	margin-bottom: 15px;
+	justify-content: space-between;
+}
+
+.form-group label {
+	width: 30%;
+	text-align: left;
+	font-size: 14px;
+	color: #333;
+}
+
+.form-group input {
+	width: 65%; 
+	padding: 8px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+button {
+	padding: 10px 20px;
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	width: 100%;
+	margin-top: 10px;
+}
+
+button:hover {
+	background-color: #45a049;
+}
+
+/* login fail*/
+#error-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#error-modal .modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    width: 300px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+#error-modal .close-btn {
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+    color: #000;
+}
+
+#error-modal h2 {
+    color: #f44336; 
+}
+
+#error-modal p {
+    color: #f44336;
+    font-size: 16px;
+}
+/*end login*/

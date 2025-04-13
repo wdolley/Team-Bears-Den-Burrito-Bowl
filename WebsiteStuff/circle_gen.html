@@ -1,68 +1,289 @@
 <!doctype HTML>
-<html lang='en'> <!--default language of the html-->
+<html lang='en'>
 <head>
-	<meta charset="UTF-8"> <!--accessible on every device-->
-	<meta name="description" content=" ">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>buildersblock/circlegenerator</title> <!--title of website url-->
+  <meta charset="UTF-8">
+  <meta name="description" content="Circle and ellipse generator tool using brackets">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>buildersblock/circlegenerator</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="scripts.js" defer></script>
+  <style>
+    #output-container {
+      margin: 20px auto;
+      border: 3px solid #ffcc00;
+      padding: 15px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 10px;
+      overflow-x: auto;
+      width: 90%;
+      max-width: 800px;
+    }
+    #shape-output {
+      font-family: monospace;
+      white-space: pre;
+      line-height: 1;
+      font-size: 14px;
+      color: #fff;
+    }
+    form {
+      margin: 20px auto;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 600px;
+      border: 3px solid #ffcc00;
+    }
+    label {
+      display: inline-block;
+      width: 100px;
+      color: #fff;
+      text-shadow: 2px 2px 0px #000;
+    }
+    input, button {
+      margin: 5px 0;
+    }
+    input[type="number"] {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+    input[type="radio"] {
+      margin-right: 5px;
+    }
+    #generate-btn {
+      background: #654321;
+      border: 3px solid #ffcc00;
+      padding: 10px 20px;
+      font-size: 18px;
+      font-family: 'Minecraftia', sans-serif;
+      color: white;
+      cursor: pointer;
+      text-shadow: 2px 2px 0px #000;
+      border-radius: 5px;
+      transition: 0.2s ease-in-out;
+      width: auto;
+    }
+    #generate-btn:hover {
+      background: #228B22;
+      transform: translateY(-2px);
+    }
+    .shape-controls {
+      margin-top: 10px;
+      color: #fff;
+    }
+    .radio-group {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+  </style>
 </head>
-
 <body>
-	<div id='container'>
-		<header>
-			<h1>Circle Generator</h1>
-			<div>
-				<p>Generate a circle with a specific radius and color!</p>
-				<form id="circle-form">
-					<input type="radio" id="Circle" name="Type button" value="Circle">
-					<label for="circle">Circle</label><br>
-					<input type="radio" id="Ellipse" name="Type button" value="Ellipse">
-					<label for="Ellipse">Ellipse</label><br>
-					<label for="radius">Radius:</label>
-					<input type="number" id="radius" name="radius" min="1" max="100"><br>
-					<label for="Width">Width:&nbsp</label>
-					<input type="number" id="width" name="width" min="1" max="100"><br>
-					<label for="Height">Height:</label>
-					<input type="number" id="height" name="height" min="1" max="100"><br>
-					<button type="submit" onclick="GenerateCircle()">Generate Circle</button>
-					<script>
-							function GenerateCircle() {
-							// Get the values from the inputs 
-							var radius = document.getElementById("radius").value;
-							var width = document.getElementById("width").value;
-							var height = document.getElementById("height").value;
-							//var type = document.querySelector('input[name="Type button"]:checked').value;
-							var arr = [];
-							// Create the circle
-							// first draft maybe works 
-							for(var i = 0; i <= radius*2; i++) {
-								var row = [];
-								for(var j = 0; j <= radius*2; j++) {
-									if(Math.sqrt(Math.pow(Math.abs(radius-i), 2) + Math.pow(Math.abs(radius-j), 2)) <= radius) {
-										row.push("X");
-									} else {
-										row.push(" ");
-									}
-								}
-								arr.push(row);
-							}
-							// Print the circle
-							for(var i = 0; i < arr.length; i++) {
-								console.log(arr[i].join(""));
-							}
-						}
-					</script>
-					<script src="CSVparse.js" defer></script>
-					<button type="submit" onclick="csv()">test</button>
-				</form>
-			</div>
-			
-			<nav>
-				<ul class="nav">
-					<li><a href="index.html">Builders Block</a></li>
-					<li><a href="palette.html">Palettes</a></li>
-					<li><a href="circle_gen.html" class="active">Circle Generator</a></li>
-				</ul>
-			</nav>
-		</header>
+<div id='container'>
+  <header>
+    <div class="top-bar">
+      <a href="index.html" class="logo">Builders Block</a>
+      <nav>
+        <ul class="nav">
+          <li><a href="index.html">Builders Block</a></li>
+          <li><a href="palette.html">Palettes</a></li>
+          <li><a href="circle_gen.html" class="active">Circle Generator</a></li>
+          <li class="profile">
+            <a href="#" class="profile-link">
+              <img src="../assets/profile.png" alt="Profile" class="profile-icon">
+              <span>Profile</span>
+            </a>
+            <div class="dropdown-menu">
+              <a href="#" id="login-link">Login</a>
+              <a href="saved_palettes.html">Saved Palettes</a>
+              <a href="sign_up.html">Sign up</a>
+              <a href="logout.html">Logout</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <h1>Circle Generator</h1>
+  </header>
+  
+  <main>
+    <p class="tagline">Generate a circle or ellipse using [ ] brackets for your builds!</p>
+    
+    <form id="circle-form">
+      <div class="radio-group">
+        <div>
+          <input type="radio" id="circle" name="shapeType" value="Circle" checked>
+          <label for="circle" style="width: auto;">Circle</label>
+        </div>
+        <div>
+          <input type="radio" id="ellipse" name="shapeType" value="Ellipse">
+          <label for="ellipse" style="width: auto;">Ellipse</label>
+        </div>
+      </div>
+      
+      <div id="circle-controls">
+        <label for="radius">Radius:</label>
+        <input type="number" id="radius" name="radius" min="1" max="50" value="10"><br>
+      </div>
+      
+      <div id="ellipse-controls" class="shape-controls" style="display: none;">
+        <label for="width">Width:</label>
+        <input type="number" id="width" name="width" min="1" max="50" value="15"><br>
+        <label for="height">Height:</label>
+        <input type="number" id="height" name="height" min="1" max="50" value="10"><br>
+      </div>
+      
+      <button type="button" id="generate-btn">Generate Shape</button>
+    </form>
+    
+    <div id="output-container">
+      <div id="shape-output"></div>
+    </div>
+  </main>
+</div>
+<div id="login-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h2>Login</h2>
+    <form id="login-form">
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</div>
+<div id="error-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" id="close-error-btn">&times;</span>
+    <h2>Invalid Credentials</h2>
+    <p id="error-message">Your username or password is incorrect. Please try again.</p>
+    <a href="sign_up.html" id="signup-link" style="display: none;">Sign up here</a>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const circleRadio = document.getElementById('circle');
+  const ellipseRadio = document.getElementById('ellipse');
+  const circleControls = document.getElementById('circle-controls');
+  const ellipseControls = document.getElementById('ellipse-controls');
+  const generateBtn = document.getElementById('generate-btn');
+  const output = document.getElementById('shape-output');
+  
+  circleRadio.addEventListener('change', function() {
+    if (this.checked) {
+      circleControls.style.display = 'block';
+      ellipseControls.style.display = 'none';
+    }
+  });
+  
+  ellipseRadio.addEventListener('change', function() {
+    if (this.checked) {
+      circleControls.style.display = 'none';
+      ellipseControls.style.display = 'block';
+    }
+  });
+  
+  generateBtn.addEventListener('click', function() {
+    generateShape();
+  });
+
+  function generateShape() {
+
+    const shapeType = document.querySelector('input[name="shapeType"]:checked').value;
+    
+    let result = '';
+    
+
+    if (shapeType === 'Circle') {
+      const radius = parseInt(document.getElementById('radius').value, 10);
+      
+      if (isNaN(radius) || radius <= 0) {
+        alert('Please enter a valid radius');
+        return;
+      }
+      
+      result = generateBracketCircle(radius);
+      
+    } else if (shapeType === 'Ellipse') {
+      const width = parseInt(document.getElementById('width').value, 10);
+      const height = parseInt(document.getElementById('height').value, 10);
+      
+      if (isNaN(width) || width <= 0 || isNaN(height) || height <= 0) {
+        alert('Please enter valid width and height');
+        return;
+      }
+      
+      result = generateBracketEllipse(width, height);
+    }
+    
+
+    output.textContent = result;
+  }
+
+  function generateBracketCircle(radius) {
+    const diameter = radius * 2 + 1;
+    let result = '';
+    
+    for (let y = 0; y < diameter; y++) {
+      let row = '';
+      for (let x = 0; x < diameter; x++) {
+       
+        const distanceFromCenter = Math.sqrt(
+          Math.pow(x - radius, 2) + Math.pow(y - radius, 2)
+        );
+        
+        if (distanceFromCenter <= radius) {
+          row += '[]';
+        } else {
+          row += '  ';
+        }
+      }
+      result += row + '\n';
+    }
+    
+    return result;
+  }
+  
+ 
+  function generateBracketEllipse(width, height) {
+    const diameterX = width * 2 + 1;
+    const diameterY = height * 2 + 1;
+    let result = '';
+    
+    for (let y = 0; y < diameterY; y++) {
+      let row = '';
+      for (let x = 0; x < diameterX; x++) {
+      
+        const normalizedDistance = 
+          Math.pow(x - width, 2) / Math.pow(width, 2) + 
+          Math.pow(y - height, 2) / Math.pow(height, 2);
+        
+        if (normalizedDistance <= 1) {
+          row += '[]';
+        } else {
+          row += '  ';
+        }
+      }
+      result += row + '\n';
+    }
+    
+    return result;
+  }
+  
+  
+  generateShape();
+});
+</script>
+</body>
+</html>
 	
