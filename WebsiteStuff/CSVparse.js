@@ -9,6 +9,6 @@ export function parse() {
       })
       .catch(error => {
         console.error('Error loading blocks.csv:', error);
-      });
-      return null;
+        return null;
+      });   
 }
