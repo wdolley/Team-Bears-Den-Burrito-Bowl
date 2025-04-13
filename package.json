@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/kyliemarbury/Team-Bears-Den-Burrito-Bowl#readme",
   "devDependencies": {
+    "@babel/preset-typescript": "^7.27.0",
     "jest": "^29.7.0"
   }
 }
