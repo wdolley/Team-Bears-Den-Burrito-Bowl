@@ -1,6 +1,6 @@
 module.exports = presets: [
     [
-      '@babel/preset-env --experimental-require-module ',
+      '@babel/preset-env',
       {
         targets: {
           node: 'current'
