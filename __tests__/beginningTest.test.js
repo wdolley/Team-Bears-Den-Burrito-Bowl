@@ -1,4 +1,3 @@
-import { parse } from './parse.js';
 
 test('parse ruturns an array', () => {
     const data = parse();
