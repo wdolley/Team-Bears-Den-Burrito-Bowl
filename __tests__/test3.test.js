@@ -1,4 +1,4 @@
-const { handleClick } = require('./buttonHandler');
+const { handleClick } = require('../buttonHandler');
 
 describe('Button click', () => {
   beforeEach(() => {
