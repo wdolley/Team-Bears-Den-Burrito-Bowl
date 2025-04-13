@@ -1,4 +1,4 @@
-import { parse } from './parse.js';
+import { parse } from './CSVparse.js';
 
 test('parse ruturns an array', () => {
     const data = parse();
