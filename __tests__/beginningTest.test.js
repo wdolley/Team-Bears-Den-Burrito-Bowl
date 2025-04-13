@@ -1,14 +1,14 @@
-const parse = require('../path/to/parse.js'); // Ensure correct path
+import { parse } from './parse.js';
 
-test('parse returns an array', () => {
+test('parse ruturns an array', () => {
     const data = parse();
-    expect(Array.isArray(data)).toBe(true); // Should return true
+    expect(Array.isArray(data)).toBe(true);
 });
-
 test('parse returns an array of arrays', () => {
     const data = parse();
-    expect(data.length).toBeGreaterThan(0); // Ensure array has length
+    expect(data.length).toBeGreaterThan(0);
     data.forEach(row => {
-        expect(Array.isArray(row)).toBe(true); // Each element should be an array
+        expect(Array.isArray(row)).toBe(true);
     });
-});
+}
+);
