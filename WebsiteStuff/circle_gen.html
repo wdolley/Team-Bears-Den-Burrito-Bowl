@@ -144,8 +144,6 @@
     </div>
   </main>
 </div>
-
-<!-- Login Modal -->
 <div id="login-modal" class="modal">
   <div class="modal-content">
     <span class="close-btn">&times;</span>
@@ -163,8 +161,6 @@
     </form>
   </div>
 </div>
-
-<!--login error popup-->
 <div id="error-modal" class="modal">
   <div class="modal-content">
     <span class="close-btn" id="close-error-btn">&times;</span>
@@ -176,7 +172,6 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Get form elements
   const circleRadio = document.getElementById('circle');
   const ellipseRadio = document.getElementById('ellipse');
   const circleControls = document.getElementById('circle-controls');
@@ -184,7 +179,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const generateBtn = document.getElementById('generate-btn');
   const output = document.getElementById('shape-output');
   
-  // Toggle between circle and ellipse controls
   circleRadio.addEventListener('change', function() {
     if (this.checked) {
       circleControls.style.display = 'block';
@@ -199,19 +193,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
-  // Generate shape on button click
   generateBtn.addEventListener('click', function() {
     generateShape();
   });
-  
-  // Function to generate and display the shape using brackets
+
   function generateShape() {
-    // Get shape type
+
     const shapeType = document.querySelector('input[name="shapeType"]:checked').value;
     
     let result = '';
     
-    // Generate the shape based on type
+
     if (shapeType === 'Circle') {
       const radius = parseInt(document.getElementById('radius').value, 10);
       
@@ -234,11 +226,10 @@ document.addEventListener('DOMContentLoaded', function() {
       result = generateBracketEllipse(width, height);
     }
     
-    // Display the result
+
     output.textContent = result;
   }
-  
-  // Function to generate a circle using brackets
+
   function generateBracketCircle(radius) {
     const diameter = radius * 2 + 1;
     let result = '';
@@ -246,8 +237,7 @@ document.addEventListener('DOMContentLoaded', function() {
     for (let y = 0; y < diameter; y++) {
       let row = '';
       for (let x = 0; x < diameter; x++) {
-        // Calculate if the point is on or inside the circle
-        // Using the equation (x-h)² + (y-k)² ≤ r² for a circle
+       
         const distanceFromCenter = Math.sqrt(
           Math.pow(x - radius, 2) + Math.pow(y - radius, 2)
         );
@@ -264,7 +254,7 @@ document.addEventListener('DOMContentLoaded', function() {
     return result;
   }
   
-  // Function to generate an ellipse using brackets
+ 
   function generateBracketEllipse(width, height) {
     const diameterX = width * 2 + 1;
     const diameterY = height * 2 + 1;
@@ -273,8 +263,7 @@ document.addEventListener('DOMContentLoaded', function() {
     for (let y = 0; y < diameterY; y++) {
       let row = '';
       for (let x = 0; x < diameterX; x++) {
-        // Calculate if the point is on or inside the ellipse
-        // Using the equation (x-h)²/a² + (y-k)²/b² ≤ 1 for an ellipse
+      
         const normalizedDistance = 
           Math.pow(x - width, 2) / Math.pow(width, 2) + 
           Math.pow(y - height, 2) / Math.pow(height, 2);
@@ -291,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function() {
     return result;
   }
   
-  // Generate a default circle on page load
+  
   generateShape();
 });
 </script>
