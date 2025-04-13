@@ -15,14 +15,19 @@
   "license": "ISC",
   "type": "module",
   "jest": {
-    "transform": {"^.+\\.jsx?$": "babel-jest"}
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
   },
   "bugs": {
     "url": "https://github.com/kyliemarbury/Team-Bears-Den-Burrito-Bowl/issues"
   },
   "homepage": "https://github.com/kyliemarbury/Team-Bears-Den-Burrito-Bowl#readme",
   "devDependencies": {
+    "@babel/core": "^7.26.10",
+    "@babel/preset-env": "^7.26.9",
     "@babel/preset-typescript": "^7.27.0",
+    "babel-jest": "^29.7.0",
     "jest": "^29.7.0"
   }
 }
