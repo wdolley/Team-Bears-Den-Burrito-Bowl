@@ -5,9 +5,10 @@ export function parse() {
         const rows = text.trim().split('\n');
         const data = rows.map(row => row.split(','));
         console.log(data); // Array of arrays
+        return data;
       })
       .catch(error => {
         console.error('Error loading blocks.csv:', error);
       });
-      return data;
+      return null;
 }
