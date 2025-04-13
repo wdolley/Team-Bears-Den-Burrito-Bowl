@@ -1,4 +1,4 @@
-import { parse } from './parse.js';
+const { parse } = require('./parse.js');
 
 test('parse ruturns an array', () => {
     const data = parse();
