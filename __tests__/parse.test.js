@@ -1,5 +1,11 @@
 import { parse } from '../WebsiteStuff/CSVparse.js';
 
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    text: () => Promise.resolve("name,age\nAlice,30\nBob,25")
+  })
+);
+
 test('parse ruturns an array', async() => {
     const data = await parse();
     expect(Array.isArray(data)).toBe(true);
