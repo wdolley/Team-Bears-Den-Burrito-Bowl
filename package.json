@@ -15,7 +15,7 @@
   "license": "ISC",
   "type": "module",
   "jest": {
-    "transform": {}
+    "transform": {"^.+\\.jsx?$": "babel-jest"}
   },
   "bugs": {
     "url": "https://github.com/kyliemarbury/Team-Bears-Den-Burrito-Bowl/issues"
