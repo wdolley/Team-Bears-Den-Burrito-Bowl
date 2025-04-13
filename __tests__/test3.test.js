@@ -1,19 +1,18 @@
-const { handleClick } = require('../buttonHandler');
+const { handleClick, attachClickHandler } = require('../buttonHandler');
 
 describe('Button click', () => {
   beforeEach(() => {
-    // Set up the DOM
-    document.body.innerHTML = `<button id="myButton">Click Me</button>`;
-    document.getElementById('myButton').addEventListener('click', handleClick);
+    document.body.innerHTML = `<button id="generate-btn">Generate</button>`;
+    attachClickHandler();
   });
 
   test('calls handleClick on button click', () => {
-    const clickSpy = jest.spyOn(console, 'log');
+    const spy = jest.spyOn(console, 'log');
 
-    document.getElementById('myButton').click();
+    document.getElementById('generate-btn').click();
 
-    expect(clickSpy).toHaveBeenCalledWith('Button was clicked!');
-    
-    clickSpy.mockRestore();
+    expect(spy).toHaveBeenCalledWith('Button was clicked!');
+
+    spy.mockRestore();
   });
 });
