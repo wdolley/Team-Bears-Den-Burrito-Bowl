@@ -1,4 +1,4 @@
-import { parse } from 'Team-Bears-Den-Burrito-Bowl/WebsiteStuff/CSVparse.js';
+import { parse } from '../WebsiteStuff/CSVparse.js';
 
 test('parse ruturns an array', () => {
     const data = parse();
