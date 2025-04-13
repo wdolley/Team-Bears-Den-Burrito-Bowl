@@ -1,4 +1,4 @@
-function parse() {
+export function parse() {
     fetch('blocks.csv') // Must be hosted in the same folder or publicly accessible
       .then(response => response.text())
       .then(text => {
