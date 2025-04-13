@@ -1,4 +1,4 @@
-const { parse } = require('./parse.js');
+const { parse } = require('CSVparse.js');
 
 test('parse ruturns an array', () => {
     const data = parse();
