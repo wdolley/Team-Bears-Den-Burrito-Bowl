@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 const { handleClick, attachClickHandler } = require('../buttonHandler');
 
 describe('Button click', () => {
