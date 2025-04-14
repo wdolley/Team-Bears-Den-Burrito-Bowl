@@ -12,7 +12,7 @@ describe('Circle Generator HTML Integration (no @testing-library)', () => {
     document.documentElement.innerHTML = html;
 
     // Load and run the external JavaScript manually
-    const script = fs.readFileSync(path.resolve(__dirname, './scripts.js'), 'utf8');
+    const script = fs.readFileSync(path.resolve(__dirname, '../WebsiteStuff/scripts.js'), 'utf8');
     eval(script); // NOTE: this runs the script in the current context
   });
 
