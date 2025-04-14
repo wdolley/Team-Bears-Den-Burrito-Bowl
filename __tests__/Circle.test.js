@@ -13,9 +13,8 @@ describe('Cirle Generate test', () => {
       
         // Load and run script
         const script = fs.readFileSync(path.resolve(__dirname, '../WebsiteStuff/scripts.js'), 'utf8');
-        eval(script);
+        eval(html);
       
-        // ✅ Manually dispatch the DOMContentLoaded event
         document.dispatchEvent(new Event('DOMContentLoaded'));
       });
 
@@ -29,8 +28,8 @@ describe('Cirle Generate test', () => {
     generateBtn.click();
 
     // Check output
-    const output = document.getElementById('shape-output').textContent;
-    print(output);
+    const output = document.getElementById('shape-output').textCntent;
+
     const expected =
       '  []  \n' +
       '[][][]\n' +
