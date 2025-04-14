@@ -5,16 +5,19 @@
 const fs = require('fs');
 const path = require('path');
 
-describe('Circle Generator HTML Integration (no @testing-library)', () => {
-  beforeEach(() => {
-    // Load and inject the HTML
-    const html = fs.readFileSync(path.resolve(__dirname, '../WebsiteStuff/circle_gen.html'), 'utf8');
-    document.documentElement.innerHTML = html;
-
-    // Load and run the external JavaScript manually
-    const script = fs.readFileSync(path.resolve(__dirname, '../WebsiteStuff/scripts.js'), 'utf8');
-    eval(script); // NOTE: this runs the script in the current context
-  });
+describe('Cirle Generate test', () => {
+    beforeEach(() => {
+        // Load HTML
+        const html = fs.readFileSync(path.resolve(__dirname, '../WebsiteStuff/circle_gen.html'), 'utf8');
+        document.documentElement.innerHTML = html;
+      
+        // Load and run script
+        const script = fs.readFileSync(path.resolve(__dirname, '../WebsiteStuff/scripts.js'), 'utf8');
+        eval(script);
+      
+        // ✅ Manually dispatch the DOMContentLoaded event
+        document.dispatchEvent(new Event('DOMContentLoaded'));
+      });
 
   test('generates a correct circle for radius 1', () => {
     // Set the radius
