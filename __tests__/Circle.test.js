@@ -8,7 +8,7 @@ const path = require('path');
 describe('Circle Generator (from inline HTML)', () => {
   beforeEach(() => {
     // Load and inject the entire HTML file into jsdom
-    const html = fs.readFileSync(path.resolve(__dirname, './circle_gen.html'), 'utf8');
+    const html = fs.readFileSync(path.resolve(__dirname, '../WebsiteStuff/circle_gen.html'), 'utf8');
     document.documentElement.innerHTML = html;
 
     // Extract and eval all <script> blocks in the HTML manually
