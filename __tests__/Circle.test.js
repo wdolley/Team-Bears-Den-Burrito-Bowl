@@ -4,7 +4,6 @@
 
 const fs = require('fs');
 const path = require('path');
-require('@testing-library/jest-dom');
 const { fireEvent, screen } = require('@testing-library/dom');
 
 describe('Circle Generator HTML Integration', () => {
