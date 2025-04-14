@@ -8,7 +8,7 @@ const path = require('path');
 describe('Circle Generator HTML Integration (no @testing-library)', () => {
   beforeEach(() => {
     // Load and inject the HTML
-    const html = fs.readFileSync(path.resolve(__dirname, '../circle_gen.html'), 'utf8');
+    const html = fs.readFileSync(path.resolve(__dirname, '../WebsiteStuff/circle_gen.html'), 'utf8');
     document.documentElement.innerHTML = html;
 
     // Load and run the external JavaScript manually
