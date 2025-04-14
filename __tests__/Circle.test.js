@@ -29,8 +29,8 @@ describe('Cirle Generate test', () => {
     generateBtn.click();
 
     // Check output
-    const output = document.getElementById('shape-output');
-
+    const output = document.getElementById('shape-output').textContent;
+    print(output);
     const expected =
       '  []  \n' +
       '[][][]\n' +
