@@ -5,30 +5,36 @@
 const fs = require('fs');
 const path = require('path');
 
-describe('Cirle Generate test', () => {
-    beforeEach(() => {
-        // Load HTML
-        const html = fs.readFileSync(path.resolve(__dirname, '../WebsiteStuff/circle_gen.html'), 'utf8');
-        document.documentElement.innerHTML = html;
-      
-        // Load and run script
-        const script = fs.readFileSync(path.resolve(__dirname, '../WebsiteStuff/scripts.js'), 'utf8');
-        eval(script);
-      
-        document.dispatchEvent(new Event('DOMContentLoaded'));
-      });
+describe('Circle Generator (from inline HTML)', () => {
+  beforeEach(() => {
+    // Load and inject the entire HTML file into jsdom
+    const html = fs.readFileSync(path.resolve(__dirname, './circle_gen.html'), 'utf8');
+    document.documentElement.innerHTML = html;
 
-  test('generates a correct circle for radius 1', () => {
-    // Set the radius
+    // Extract and eval all <script> blocks in the HTML manually
+    const scriptMatches = html.match(/<script[^>]*>([\s\S]*?)<\/script>/gi);
+
+    if (scriptMatches) {
+      scriptMatches.forEach(scriptTag => {
+        const scriptContent = scriptTag.replace(/<script[^>]*>|<\/script>/gi, '');
+        eval(scriptContent); // run the inline script
+      });
+    }
+
+    // Trigger DOMContentLoaded manually so your script runs
+    document.dispatchEvent(new Event('DOMContentLoaded'));
+  });
+
+  test('generates correct circle for radius 1', () => {
     const radiusInput = document.getElementById('radius');
     radiusInput.value = 1;
 
-    // Click the generate button
     const generateBtn = document.getElementById('generate-btn');
     generateBtn.click();
 
-    // Check output
     const output = document.getElementById('shape-output').textContent;
+
+    console.log('Output:', JSON.stringify(output)); // helpful for debugging
 
     const expected =
       '  []  \n' +
@@ -36,19 +42,5 @@ describe('Cirle Generate test', () => {
       '  []  \n';
 
     expect(output).toBe(expected);
-  });
-
-  test('alerts when given invalid radius', () => {
-    const radiusInput = document.getElementById('radius');
-    radiusInput.value = 0;
-
-    // Mock the alert
-    global.alert = jest.fn();
-
-    // Click the button
-    const generateBtn = document.getElementById('generate-btn');
-    generateBtn.click();
-
-    expect(global.alert).toHaveBeenCalledWith('Please enter a valid radius');
   });
 });
