@@ -13,7 +13,7 @@ describe('Cirle Generate test', () => {
       
         // Load and run script
         const script = fs.readFileSync(path.resolve(__dirname, '../WebsiteStuff/scripts.js'), 'utf8');
-        eval(html);
+        eval(script);
       
         document.dispatchEvent(new Event('DOMContentLoaded'));
       });
