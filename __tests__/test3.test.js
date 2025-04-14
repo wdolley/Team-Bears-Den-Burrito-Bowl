@@ -3,6 +3,7 @@
  */
 const { handleClick, attachClickHandler } = require('../buttonHandler');
 
+
 describe('Button click', () => {
   beforeEach(() => {
     document.body.innerHTML = <button id="generate-btn">Generate</button>;
