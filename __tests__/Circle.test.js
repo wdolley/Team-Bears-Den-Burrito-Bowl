@@ -4,28 +4,28 @@
 
 const fs = require('fs');
 const path = require('path');
-const { fireEvent, screen } = require('@testing-library/dom');
 
-describe('Circle Generator HTML Integration', () => {
+describe('Circle Generator HTML Integration (no @testing-library)', () => {
   beforeEach(() => {
-    // Load the HTML file into jsdom
+    // Load and inject the HTML
     const html = fs.readFileSync(path.resolve(__dirname, './circle_gen.html'), 'utf8');
     document.documentElement.innerHTML = html;
 
-    // Manually run the script since <script defer> won’t work in jsdom
+    // Load and run the external JavaScript manually
     const script = fs.readFileSync(path.resolve(__dirname, './scripts.js'), 'utf8');
-    eval(script); // Load and run JS in the same test environment
+    eval(script); // NOTE: this runs the script in the current context
   });
 
-  test('generates correct circle output when button is clicked', () => {
-    // Set radius to 1 for a simple output
+  test('generates a correct circle for radius 1', () => {
+    // Set the radius
     const radiusInput = document.getElementById('radius');
     radiusInput.value = 1;
 
-    // Trigger click
-    const button = document.getElementById('generate-btn');
-    fireEvent.click(button);
+    // Click the generate button
+    const generateBtn = document.getElementById('generate-btn');
+    generateBtn.click();
 
+    // Check output
     const output = document.getElementById('shape-output').textContent;
 
     const expected =
@@ -36,14 +36,17 @@ describe('Circle Generator HTML Integration', () => {
     expect(output).toBe(expected);
   });
 
-  test('shows alert on invalid radius', () => {
+  test('alerts when given invalid radius', () => {
     const radiusInput = document.getElementById('radius');
-    radiusInput.value = -5;
+    radiusInput.value = 0;
 
-    window.alert = jest.fn(); // mock alert
+    // Mock the alert
+    global.alert = jest.fn();
 
-    fireEvent.click(document.getElementById('generate-btn'));
+    // Click the button
+    const generateBtn = document.getElementById('generate-btn');
+    generateBtn.click();
 
-    expect(window.alert).toHaveBeenCalledWith('Please enter a valid radius');
+    expect(global.alert).toHaveBeenCalledWith('Please enter a valid radius');
   });
 });
