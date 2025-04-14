@@ -29,7 +29,7 @@ describe('Cirle Generate test', () => {
     generateBtn.click();
 
     // Check output
-    const output = document.getElementById('shape-output').textContent;
+    const output = document.getElementById('shape-output');
 
     const expected =
       '  []  \n' +
