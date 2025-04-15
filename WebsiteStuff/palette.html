@@ -23,7 +23,22 @@
 
         <main>
             <p class="p-ex">Choose your colors and blocks with the filter to generate the perfect palette for your build!</p>
+            <div class="color-picker-container">
+                <label for="color-picker">Select a color:</label>
+                <input type="color" id="color-picker" name="color-picker" value="#ff0000">
+                <p id="color-value">Selected color: #ff0000</p>
+            </div>
         </main>
     </div>
+    <script>
+        const colorPicker = document.getElementById('color-picker');
+        const colorValue = document.getElementById('color-value');
+
+        colorPicker.addEventListener('input', function() {
+            const selectedColor = this.value;
+            colorValue.textContent = `Selected color: ${selectedColor}`;
+            console.log('Selected color:', selectedColor);
+        });
+    </script>
 </body>
 </html>
