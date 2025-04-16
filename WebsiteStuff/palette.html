@@ -29,15 +29,62 @@
                 <p id="color-value">Selected color: #ff0000</p>
             </div>
         </main>
+        <button type="button" id="test-Palette-button">generate palette</button>
+
     </div>
-    <script>
+    <script src="./ColorMatch.js" type="module"></script>
+    <script src="./CSVparse.js" type="module"></script>
+    <script type="module">
+        import { MatchColor } from './ColorMatch.js';
+        import { parse } from './CSVparse.js';
         const colorPicker = document.getElementById('color-picker');
         const colorValue = document.getElementById('color-value');
-
+        const testPaletteButton = document.getElementById('test-Palette-button');
+        const csv = await parse();
+        var paletteSize = 6;
         colorPicker.addEventListener('input', function() {
             const selectedColor = this.value;
             colorValue.textContent = `Selected color: ${selectedColor}`;
             console.log('Selected color:', selectedColor);
+        });
+
+        testPaletteButton.addEventListener('click', function() {
+            console.log("Button clicked");
+            var loopNumber = 0
+            var palette = [];
+            var inPalette = false;
+            var baseRange = 0.01;
+            while(palette.length < paletteSize) {
+                loopNumber++;
+                if(loopNumber > 1000){
+                    console.log("Loop limit reached");
+                    break;
+                }
+                inPalette = false;
+                for(var i = 0; i < csv.length; i++) {
+                    if(MatchColor("#"+csv[i][1], colorPicker.value,baseRange)) {
+                        //console.log("Match found: " + csv[i][0]);
+                        for(var j = 0; j < palette.length; j++){
+                            if(palette[j] == csv[i][0]){
+                                inPalette = true;
+                                break;
+                            }
+                        }
+                        if(inPalette == false) {
+                            palette.push(csv[i][0]);
+                        }
+                    }  
+                }
+            baseRange += 0.01*loopNumber;
+        }
+            //print paletteSize random blocks from the palette and remove
+            var randomBlocks = [];
+            for(var i = 0; i < paletteSize; i++) {
+                var randomIndex = Math.floor(Math.random() * palette.length);
+                randomBlocks.push(palette[randomIndex]);
+                palette.splice(randomIndex, 1);
+            }
+            console.log("Random blocks: " + randomBlocks);
         });
     </script>
 </body>
