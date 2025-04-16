@@ -9,8 +9,6 @@ Anvil,454545,anvil.png,0
 Azalea Top,667d30,azalea_top.png,0
 Bamboo Block,7f903a,bamboo_block.png,1
 Bamboo Block Top,8b8e3e,bamboo_block_top.png,1
-Bamboo Fence Gate Particle,cfba55,bamboo_fence_gate_particle.png,1
-Bamboo Fence Particle,cfba55,bamboo_fence_particle.png,1
 Bamboo Mosaic,beaa4e,bamboo_mosaic.png,1
 Bamboo Planks,c1ad50,bamboo_planks.png,1
 Bamboo Stalk,5e9014,bamboo_stalk.png,1
@@ -249,7 +247,6 @@ Jungle Log Top,966d47,jungle_log_top.png,1
 Jungle Planks,a07351,jungle_planks.png,1
 Lapis Block,1f438c,lapis_block.png,0
 Lapis Ore,6b768d,lapis_ore.png,0
-Lava Still,d45a12,lava_still.png,0
 Lectern Base,a3794a,lectern_base.png,0
 Lectern Front,826538,lectern_front.png,0
 Lectern Sides,967544,lectern_sides.png,0
@@ -416,8 +413,6 @@ Sculk Catalyst Side Bloom,4d615d,sculk_catalyst_side_bloom.png,0
 Sculk Catalyst Top,0f2026,sculk_catalyst_top.png,0
 Sculk Catalyst Top Bloom,102d33,sculk_catalyst_top_bloom.png,0
 Sculk Sensor Top,074654,sculk_sensor_top.png,0
-Sculk Shrieker Can Summon Inner Top,1f4142,sculk_shrieker_can_summon_inner_top.png,0
-Sculk Shrieker Inner Top,1e3637,sculk_shrieker_inner_top.png,0
 Sea Lantern,acc8be,sea_lantern.png,0
 Shroomlight,f19347,shroomlight.png,0
 Shulker Box,8b618b,shulker_box.png,0
@@ -469,11 +464,6 @@ Stripped Warped Stem Top,34817c,stripped_warped_stem_top.png,0
 Target Side,e5b0a8,target_side.png,0
 Target Top,e2aa9e,target_top.png,0
 Terracotta,985e44,terracotta.png,0
-Test Block Accept,84bf75,test_block_accept.png,0
-Test Block Fail,7d71ab,test_block_fail.png,0
-Test Block Log,8fb0d6,test_block_log.png,1
-Test Block Start,bf9e78,test_block_start.png,0
-Test Instance Block,7f7977,test_instance_block.png,0
 Tnt Side,b65854,tnt_side.png,1
 Tnt Top,8f3e36,tnt_top.png,1
 Trial Spawner Top Active,3f515c,trial_spawner_top_active.png,0
