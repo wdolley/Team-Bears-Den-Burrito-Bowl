@@ -28,20 +28,29 @@
                 <input type="color" id="color-picker" name="color-picker" value="#ff0000">
                 <p id="color-value">Selected color: #ff0000</p>
             </div>
+            <p class="p">Select the number of blocks you would like in your palette:</p>
+            <div class="block-count-container">
+                <label for="block-count">Number of blocks:</label>
+                <input type="number" id="block-count" name="block-count" min="1" max="10" value="5">
+                <button type="button" id="test-Palette-button">Generate Palette</button>
+            </div>
+            <div id="palette-container"></div>
         </main>
-        <button type="button" id="test-Palette-button">generate palette</button>
-
     </div>
     <script src="./ColorMatch.js" type="module"></script>
     <script src="./CSVparse.js" type="module"></script>
     <script type="module">
         import { MatchColor } from './ColorMatch.js';
         import { parse } from './CSVparse.js';
+
         const colorPicker = document.getElementById('color-picker');
         const colorValue = document.getElementById('color-value');
         const testPaletteButton = document.getElementById('test-Palette-button');
-        const csv = await parse();
-        var paletteSize = 6;
+        const blockCountInput = document.getElementById('block-count');
+        const paletteContainer = document.getElementById('palette-container');
+
+        const csv = await parse();  // Parse your CSV data
+
         colorPicker.addEventListener('input', function() {
             const selectedColor = this.value;
             colorValue.textContent = `Selected color: ${selectedColor}`;
@@ -50,41 +59,74 @@
 
         testPaletteButton.addEventListener('click', function() {
             console.log("Button clicked");
-            var loopNumber = 0
+            const paletteSize = parseInt(blockCountInput.value, 10);
+            var loopNumber = 0;
             var palette = [];
             var inPalette = false;
             var baseRange = 0.01;
-            while(palette.length < paletteSize) {
+
+            // Loop to collect the palette colors based on the CSV data
+            while (palette.length < paletteSize) {
                 loopNumber++;
-                if(loopNumber > 1000){
+                if (loopNumber > 1000) {
                     console.log("Loop limit reached");
                     break;
                 }
                 inPalette = false;
-                for(var i = 0; i < csv.length; i++) {
-                    if(MatchColor("#"+csv[i][1], colorPicker.value,baseRange)) {
-                        //console.log("Match found: " + csv[i][0]);
-                        for(var j = 0; j < palette.length; j++){
-                            if(palette[j] == csv[i][0]){
+                for (var i = 0; i < csv.length; i++) {
+                    if (MatchColor("#" + csv[i][1], colorPicker.value, baseRange)) {
+                        for (var j = 0; j < palette.length; j++) {
+                            if (palette[j] === csv[i][0]) {
                                 inPalette = true;
                                 break;
                             }
                         }
-                        if(inPalette == false) {
+                        if (!inPalette) {
                             palette.push(csv[i][0]);
                         }
-                    }  
+                    }
                 }
-            baseRange += 0.02*loopNumber;
-        }
-            //print paletteSize random blocks from the palette and remove
+                baseRange += 0.02 * loopNumber;
+            }
+
+            // Pick random blocks from the palette and remove them from the list
             var randomBlocks = [];
-            for(var i = 0; i < paletteSize; i++) {
+            for (var i = 0; i < paletteSize; i++) {
                 var randomIndex = Math.floor(Math.random() * palette.length);
                 randomBlocks.push(palette[randomIndex]);
                 palette.splice(randomIndex, 1);
             }
-            console.log("Random blocks: " + randomBlocks);
+
+            console.log("Random blocks: ", randomBlocks);
+
+            // Create a table to display the blocks
+            var table = document.createElement("table");
+            var header = table.createTHead();
+            var headerRow = header.insertRow(0);
+            var headerCell = headerRow.insertCell(0);
+            headerCell.innerHTML = "Block Name";  // Block Name column header
+            var headerCell2 = headerRow.insertCell(1);
+            headerCell2.innerHTML = "Block ID";  // Block ID column header
+
+            const body = table.createTBody();
+            table.style.color = "black";
+
+            // For each random block, create a row in the table
+            for (let i = 0; i < randomBlocks.length; i++) {
+                const blockName = randomBlocks[i];
+                const blockIndex = csv.findIndex(row => row[0] === blockName);
+                const blockId = blockIndex !== -1 ? csv[blockIndex][1] : "N/A"; // If not found, display "N/A"
+
+                const row = body.insertRow();
+                row.insertCell().textContent = blockName; // Block Name cell
+                row.insertCell().textContent = blockId;   // Block ID cell
+            }
+
+            // Clear any previous palette and append the new table
+            paletteContainer.innerHTML = "";
+            paletteContainer.appendChild(table);
+
+            console.log("Table appended with rows:", table.rows.length);
         });
     </script>
 </body>
