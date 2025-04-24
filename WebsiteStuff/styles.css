@@ -13,6 +13,10 @@ body {
     margin: 0;
 }
 
+img {
+    image-rendering: pixelated;
+}
+
 header {
     background: url('https://www.minecraft.net/content/dam/minecraftnet/promo/mc-dirt-bg.jpg');
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -275,6 +279,10 @@ button:hover {
 	text-align: left;
 	font-size: 14px;
 	color: #333;
+}
+
+label {
+    color: #000
 }
 
 .form-group input {
