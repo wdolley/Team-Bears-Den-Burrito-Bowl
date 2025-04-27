@@ -89,7 +89,7 @@
                         }
                     }
                 }
-                baseRange += 0.02 * loopNumber;
+                baseRange += 0.05 * loopNumber;
             }
 
             // Pick random blocks from the palette and remove them from the list
@@ -103,28 +103,24 @@
             console.log("Random blocks: ", randomBlocks);
 
             // Create a table to display the blocks
-            var table = document.createElement("table");
-            var header = table.createTHead();
-            var headerRow = header.insertRow(0);
-            var headerCell = headerRow.insertCell(0);
+            var table = document.createElement("table");;
             var images = [];
-            for (let i = 1; i < paletteSize; i++) {
+            var row;
+            for (let i = 0; i < paletteSize; i++) {
                 images.push(document.createElement("img"));
             }
-            headerCell.innerHTML = "Block Name";  // Block Name column header
-
             const body = table.createTBody();
             table.style.color = "black";
 
             // For each random block, create a row in the table
             for (let i = 0; i < randomBlocks.length; i++) {
-                const blockName = randomBlocks[i];
-                const blockIndex = csv.findIndex(row => row[0] === blockName);
-                const blockId = blockIndex !== -1 ? csv[blockIndex][1] : "N/A"; // If not found, display "N/A"
-                images[i].src = "https://github.com/kyliemarbury/Team-Bears-Den-Burrito-Bowl/blob/main/Blocks/" + randomBlocks[i];
-                const row = body.insertRow();
-                row.insertCell().textContent = blockName; // Block Name cell
-                
+                images[i].src = "https://raw.githubusercontent.com/kyliemarbury/Team-Bears-Den-Burrito-Bowl/refs/heads/main/Blocks/" + randomBlocks[i];
+                if (i % 4 == 0) {
+                    console.log("test");
+                    row = body.insertRow();
+                }
+                const imgCell = row.insertCell();
+                imgCell.appendChild(images[i]); 
             }
 
             // Clear any previous palette and append the new table

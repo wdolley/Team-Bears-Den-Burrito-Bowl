@@ -17,11 +17,10 @@ export function MatchColor(color1,color2,range) {
     var diff2 = Math.max(rgb2.r,rgb2.g,rgb2.b)-Math.min(rgb2.r,rgb2.g,rgb2.b);
     var max = Math.max(diff1,diff2);
     range = (max * range) + Math.pow((max * range/10),2);
-    // gray not work please fix
     if((diff1 <= 30) && (diff2 <= 30)) {
         var total1 = rgb1.r + rgb1.g + rgb1.b;
         var total2 = rgb2.r + rgb2.g + rgb2.b;
-        if(Math.abs(total1 - total2) < range*10) {
+        if(Math.abs(total1 - total2) < range*100) {
             return true;
         }
     } else if (diff1 > 30 && diff2 > 30) {

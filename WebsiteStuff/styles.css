@@ -15,6 +15,8 @@ body {
 
 img {
     image-rendering: pixelated;
+    width: 112px;
+    height: 112px;
 }
 
 header {
@@ -133,7 +135,12 @@ header {
     background: #228B22;
     transform: translateY(-2px);
 }
-
+table {
+    border-collapse: separate;
+    border-spacing: 5px 0px; /* adds space between cells */
+    width: auto;
+    margin: auto;
+}
 p, .tagline {
     font-size: 18px;
     color: #fff;
