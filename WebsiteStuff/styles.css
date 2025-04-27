@@ -13,6 +13,12 @@ body {
     margin: 0;
 }
 
+img {
+    image-rendering: pixelated;
+    width: 112px;
+    height: 112px;
+}
+
 header {
     background: url('https://www.minecraft.net/content/dam/minecraftnet/promo/mc-dirt-bg.jpg');
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -129,7 +135,12 @@ header {
     background: #228B22;
     transform: translateY(-2px);
 }
-
+table {
+    border-collapse: separate;
+    border-spacing: 5px 0px; /* adds space between cells */
+    width: auto;
+    margin: auto;
+}
 p, .tagline {
     font-size: 18px;
     color: #fff;
@@ -275,6 +286,10 @@ button:hover {
 	text-align: left;
 	font-size: 14px;
 	color: #333;
+}
+
+label {
+    color: #000
 }
 
 .form-group input {
