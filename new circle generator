@@ -1,0 +1,405 @@
+<!doctype HTML>
+<html lang='en'>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Circle and ellipse generator tool using filled squares with Minecraft theme">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>buildersblock/circlegenerator - Minecraft Style</title>
+<style>
+  @import url('https://fonts.cdnfonts.com/css/minecraftia');
+
+  body {
+    margin: 0;
+    font-family: 'Minecraftia', sans-serif;
+    background: url('https://www.minecraft.net/content/dam/minecraftnet/backgrounds/bg-grass.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+  }
+
+  #container {
+    width: 100%;
+    margin: 0;
+  }
+
+  header {
+    background: url('https://www.minecraft.net/content/dam/minecraftnet/promo/mc-dirt-bg.jpg');
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    padding: 15px 20px;
+  }
+
+  h1, h2, h3 {
+    color: #ffcc00;
+    text-shadow: 3px 3px 0px #654321;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .nav {
+    list-style: none;
+    margin: 0 auto;
+    padding: 10px;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    width: 80%;
+    max-width: 1200px;
+  }
+
+  .nav li a {
+    text-decoration: none;
+    color: #ffcc00;
+    font-size: 18px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: 0.3s;
+    text-shadow: 2px 2px 0px #000;
+  }
+
+  .nav li a:hover,
+  .nav li a.active {
+    background: #228B22;
+    color: white;
+    transform: scale(1.1);
+  }
+
+  p {
+    font-size: 18px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    max-width: 80%;
+    margin: 10px auto;
+  }
+
+  #circle-generator {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 1000px;
+  }
+
+  #output-container {
+    margin-top: 20px;
+    border: 2px solid #ffcc00;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow-x: auto;
+    border-radius: 5px;
+  }
+
+  .grid-container {
+    display: grid;
+    gap: 1px;
+    line-height: 1;
+    font-size: 0;
+  }
+
+  .grid-cell {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    border: 1px solid #444;
+    box-sizing: border-box;
+  }
+
+  .filled {
+    background-color: #ffcc00;
+  }
+
+  .outline {
+    border: 2px solid #ffcc00;
+  }
+
+  form {
+    margin: 20px 0;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #654321;
+  }
+
+  label {
+    display: inline-block;
+    width: 100px;
+    color: #ffcc00;
+    text-shadow: 1px 1px 0px #000;
+  }
+
+  input, button, select {
+    margin: 5px 0;
+    font-family: 'Minecraftia', sans-serif;
+  }
+
+  input[type="number"], select {
+    background-color: #654321;
+    border: 2px solid #ffcc00;
+    padding: 8px;
+    color: white;
+    border-radius: 3px;
+  }
+
+  button {
+    background: #654321;
+    border: 3px solid #ffcc00;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: 'Minecraftia', sans-serif;
+    color: white;
+    cursor: pointer;
+    text-shadow: 2px 2px 0px #000;
+    border-radius: 5px;
+    transition: 0.2s ease-in-out;
+  }
+
+  button:hover {
+    background: #228B22;
+    transform: translateY(-2px);
+  }
+
+  .control-group {
+    margin-bottom: 10px;
+  }
+
+  input[type="radio"] {
+    margin-right: 5px;
+  }
+
+  input[type="radio"] + label {
+    width: auto;
+    margin-right: 20px;
+  }
+</style>
+</head>
+<body>
+<div id='container'>
+  <header>
+    <h1>Circle Generator</h1>
+    <nav>
+      <ul class="nav">
+        <li><a href="index.html">Builders Block</a></li>
+        <li><a href="palette.html">Palettes</a></li>
+        <li><a href="circle_gen.html" class="active">Circle Generator</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <div id="circle-generator">
+    <p>Generate a circle or ellipse using filled squares for your Minecraft builds!</p>
+    <form id="circle-form">
+      <div class="control-group">
+        <input type="radio" id="circle" name="shapeType" value="Circle" checked>
+        <label for="circle" style="width: auto;">Circle</label>
+        <input type="radio" id="ellipse" name="shapeType" value="Ellipse">
+        <label for="ellipse" style="width: auto;">Ellipse</label>
+      </div>
+      
+      <div class="control-group">
+        <label for="fillType">Fill Type:</label>
+        <select id="fillType" name="fillType">
+          <option value="filled">Filled</option>
+          <option value="outline">Outline Only</option>
+        </select>
+      </div>
+      
+      <div id="circle-controls">
+        <label for="radius">Radius:</label>
+        <input type="number" id="radius" name="radius" min="1" max="25" value="8"><br>
+      </div>
+      
+      <div id="ellipse-controls" class="shape-controls" style="display: none;">
+        <label for="width">Width:</label>
+        <input type="number" id="width" name="width" min="1" max="25" value="12"><br>
+        <label for="height">Height:</label>
+        <input type="number" id="height" name="height" min="1" max="25" value="8"><br>
+      </div>
+      
+      <button type="button" id="generate-btn">Generate Shape</button>
+    </form>
+    
+    <div id="output-container">
+      <div id="shape-output" class="grid-container"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Get form elements
+  const circleRadio = document.getElementById('circle');
+  const ellipseRadio = document.getElementById('ellipse');
+  const circleControls = document.getElementById('circle-controls');
+  const ellipseControls = document.getElementById('ellipse-controls');
+  const generateBtn = document.getElementById('generate-btn');
+  const output = document.getElementById('shape-output');
+  const fillType = document.getElementById('fillType');
+  
+  // Toggle between circle and ellipse controls
+  circleRadio.addEventListener('change', function() {
+    if (this.checked) {
+      circleControls.style.display = 'block';
+      ellipseControls.style.display = 'none';
+    }
+  });
+  
+  ellipseRadio.addEventListener('change', function() {
+    if (this.checked) {
+      circleControls.style.display = 'none';
+      ellipseControls.style.display = 'block';
+    }
+  });
+  
+  // Generate shape on button click
+  generateBtn.addEventListener('click', function() {
+    generateShape();
+  });
+  
+  // Function to generate and display the shape using squares
+  function generateShape() {
+    // Get shape type and fill type
+    const shapeType = document.querySelector('input[name="shapeType"]:checked').value;
+    const isFilled = fillType.value === 'filled';
+    
+    // Clear previous output
+    output.innerHTML = '';
+    
+    // Generate the shape based on type
+    if (shapeType === 'Circle') {
+      const radius = parseInt(document.getElementById('radius').value, 10);
+      
+      if (isNaN(radius) || radius <= 0) {
+        alert('Please enter a valid radius');
+        return;
+      }
+      
+      generateSquareCircle(radius, isFilled);
+      
+    } else if (shapeType === 'Ellipse') {
+      const width = parseInt(document.getElementById('width').value, 10);
+      const height = parseInt(document.getElementById('height').value, 10);
+      
+      if (isNaN(width) || width <= 0 || isNaN(height) || height <= 0) {
+        alert('Please enter valid width and height');
+        return;
+      }
+      
+      generateSquareEllipse(width, height, isFilled);
+    }
+  }
+  
+  // Function to generate a circle using squares
+  function generateSquareCircle(radius, isFilled) {
+    const diameter = radius * 2 + 1;
+    
+    // Set grid dimensions
+    output.style.gridTemplateColumns = `repeat(${diameter}, 20px)`;
+    
+    for (let y = 0; y < diameter; y++) {
+      for (let x = 0; x < diameter; x++) {
+        // Calculate distance from center
+        const distanceFromCenter = Math.sqrt(
+          Math.pow(x - radius, 2) + Math.pow(y - radius, 2)
+        );
+        
+        const cell = document.createElement('div');
+        cell.className = 'grid-cell';
+        
+        if (isFilled) {
+          // For filled circle
+          if (distanceFromCenter <= radius) {
+            cell.classList.add('filled');
+          }
+        } else {
+          // For outline only
+          // Add a small buffer to make the outline more precise
+          if (distanceFromCenter <= radius && distanceFromCenter > radius - 1) {
+            cell.classList.add('outline');
+          }
+        }
+        
+        output.appendChild(cell);
+      }
+    }
+  }
+  
+  // Function to generate an ellipse using squares
+  function generateSquareEllipse(width, height, isFilled) {
+    const diameterX = width * 2 + 1;
+    const diameterY = height * 2 + 1;
+    
+    // Set grid dimensions
+    output.style.gridTemplateColumns = `repeat(${diameterX}, 20px)`;
+    
+    for (let y = 0; y < diameterY; y++) {
+      for (let x = 0; x < diameterX; x++) {
+        // Calculate if the point is on or inside the ellipse
+        const normalizedX = (x - width) / width;
+        const normalizedY = (y - height) / height;
+        const normalizedDistance = normalizedX * normalizedX + normalizedY * normalizedY;
+        
+        const cell = document.createElement('div');
+        cell.className = 'grid-cell';
+        
+        if (isFilled) {
+          // For filled ellipse
+          if (normalizedDistance <= 1) {
+            cell.classList.add('filled');
+          }
+        } else {
+          // For outline only - improved algorithm
+          // Check if this cell is within the ellipse
+          if (normalizedDistance <= 1) {
+            // Check if any neighboring cell is outside the ellipse
+            let isOutline = false;
+            
+            // Check 8 surrounding cells
+            const directions = [
+              [-1, -1], [-1, 0], [-1, 1],
+              [0, -1],           [0, 1],
+              [1, -1],  [1, 0],  [1, 1]
+            ];
+            
+            for (const [dx, dy] of directions) {
+              const nx = x + dx;
+              const ny = y + dy;
+              
+              // Skip if out of bounds
+              if (nx < 0 || nx >= diameterX || ny < 0 || ny >= diameterY) {
+                isOutline = true;
+                break;
+              }
+              
+              // Check if neighbor is outside ellipse
+              const neighborNormalizedX = (nx - width) / width;
+              const neighborNormalizedY = (ny - height) / height;
+              const neighborDistance = neighborNormalizedX * neighborNormalizedX + neighborNormalizedY * neighborNormalizedY;
+              
+              if (neighborDistance > 1) {
+                isOutline = true;
+                break;
+              }
+            }
+            
+            if (isOutline) {
+              cell.classList.add('outline');
+            }
+          }
+        }
+        
+        output.appendChild(cell);
+      }
+    }
+  }
+  
+  // Generate a default circle on page load
+  generateShape();
+});
+</script>
+</body>
+</html>
