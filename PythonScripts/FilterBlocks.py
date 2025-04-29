@@ -79,7 +79,7 @@ def AddImage(file, img):
     return True
 
 toggle_continue = False
-folder = "blocks"
+folder = "blocks" 
 
 #Delete previous output if there is one and make a new one
 if os.path.isdir("FilterBlocksOutput"):
