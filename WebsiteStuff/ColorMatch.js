@@ -20,7 +20,7 @@ export function MatchColor(color1,color2,range) {
     if((diff1 <= 30) && (diff2 <= 30)) {
         var total1 = rgb1.r + rgb1.g + rgb1.b;
         var total2 = rgb2.r + rgb2.g + rgb2.b;
-        if(Math.abs(total1 - total2) < range*100) {
+        if(Math.abs(total1 - total2) < range*700) {
             return true;
         }
     } else if (diff1 > 30 && diff2 > 30) {

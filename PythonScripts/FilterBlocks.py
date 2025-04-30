@@ -55,6 +55,55 @@ def AddImage(file, img):
     name = name.replace("_", " ")
     name = name.title()
     included_files.append(name)
+
+    id = file[7:-4]
+    while (True):
+        if ("_top" in id):
+            id = id.replace("_top", "")
+        elif ("_bottom" in id):
+            id = id.replace("_bottom", "")
+        elif ("_side" in id):
+            id = id.replace("_side", "")
+        elif ("_front" in id):
+            id = id.replace("_front", "")
+        elif ("_back" in id):
+            id = id.replace("_back", "")
+        elif ("_east" in id):
+            id = id.replace("_east", "")
+        elif ("_west" in id):
+            id = id.replace("_west", "")
+        elif ("_north" in id):
+            id = id.replace("_north", "")
+        elif ("_south" in id):
+            id = id.replace("_south", "")
+        elif ("_inner" in id):
+            id = id.replace("_inner", "")
+        elif ("_lit" in id):
+            id = id.replace("_lit", "")
+        elif ("_powered" in id):
+            id = id.replace("_powered", "")
+        elif ("_log_lit" in id):
+            id = id.replace("_log_lit", "")
+        elif ("_open" in id):
+            id = id.replace("_open", "")
+        elif ("_closed" in id):
+            id = id.replace("_closed", "")
+        elif ("_on" in id):
+            id = id.replace("_on", "")
+        elif ("_off" in id):
+            id = id.replace("_off", "")
+        elif ("_base" in id):
+            id = id.replace("_base", "")
+        elif ("_honey" in id):
+            id = id.replace("_honey", "")
+        elif ("_plant" in id):
+            id = id.replace("_plant", "")
+        elif (id == "lava_still"):
+            id = "lava_bucket"
+        else:
+            break
+    block_names.append(id)
+
     #getting the average color
     src_img = cv2.imread(file)
     average_color_row = np.average(src_img, axis=0)
@@ -80,7 +129,7 @@ def AddImage(file, img):
     return True
 
 toggle_continue = False
-folder = "blocks"
+folder = "Blocks"
 
 #Delete previous output if there is one and make a new one
 if os.path.isdir("FilterBlocksOutput"):
@@ -91,8 +140,8 @@ if os.path.isdir("FilterBlocksOutput"):
 destination = os.mkdir("FilterBlocksOutput")
 
 #Include and Exclude specific files
-exclude = [folder + r"\debug.png", folder + r"\debug2.png", folder + r"\grass_block_top.png"]
-hard_exclude = ["door", "jigsaw", "water", "suspicious", "bottom", "ejecting", "1", "2", "3", "4", "5", "flow", "command", "structure", "egg"]
+exclude = [folder + r"\bamboo_stalk.png", folder + r"\debug.png", folder + r"\debug2.png", folder + r"\grass_block_top.png"]
+hard_exclude = ["lecturn", "particle", "repeater", "comparator", "test", "door", "jigsaw", "water", "suspicious", "bottom", "ejecting", "1", "2", "3", "4", "5", "flow", "command", "structure", "egg"]
 include = [folder+ r"\spruce_leaves.png",folder+ r"\oak_leaves.png",folder+ r"\mangrove_leaves.png", folder+ r"\jungle_leaves.png",folder+ r"\dark_oak_leaves.png", folder+ r"birch_leaves.png", folder+ r"\acacia_leaves.png", folder+ r"\acacia_trapdoor.png", folder+r"\azalea_leaves.png",folder+r"\azalea_plant.png", folder+r"\bamboo_fence_gate.png", folder+r"\.png", folder+r"\bamboo_trapdoor.png", folder+r"\birch_trapdoor.png", folder+r"\black_stained_glass.png", folder+r"\blue_stained_glass.png", folder+r"\brown_stained_glass.png", folder+r"\cactus_side.png", folder+r"\caqve_vines.png", folder+r"\cave_vines_lit.png", folder+r"\chain.png", folder+r"\cherry_leaves.png", folder+r"\cherry_trapdoor.png", folder+r"\cobweb.png", folder+r"\copper_grate.png", folder+r"\copper_trapdoor.png", folder+r"\copper_trapdoor.png", folder+r"\crimson_trapdoor.png", folder+r"\cyan_stained_glass.png", folder+r"\dark_oak_trapdoor.png", folder+r"\dirt_path_side.png", folder+r"\dispenser_front.png", folder+r"\enchanting_table_side.png", folder+r"\end_portal_frame_side.png", folder+r"\exposed_copper_grate.png", folder+r"\exposed_copper_trapdoor.png", folder+r"\frosted_ice_zero.png", folder+r"\flowering_azalea_leaves.png", folder+r"\glass.png", folder+r"\gray_stained_glass.png", folder+r"\green_stained_glass.png", folder+r"\honey_block_bottom.png", folder+r"\honey_block_side.png", folder+r"\honey_block_top.png", folder+r"\ice.png", folder+r"\iron_bars.png", folder+r"\iron_trapdoor.png", folder+r"\jungle_trapdoor.png", folder+r"\ladder.png", folder+r"\light_blue_stained_glass.png", folder+r"\light_gray_stained_glass.png", folder+r"\lime_stained_glass.png", folder+r"\mangrove_stained_glass.png", folder+r"\mangrove_roots_side.png", folder+r"\mangrove_roots_top.png", folder+r"\mangrove_trapdoor.png", folder+r"\mud_bricks.png", folder+r"\mycelium_top.png", folder+r"\oak_trapdoor.png", folder+r"\orange_stained_glass.png", folder+r"\oxidized_copper_grate.png", folder+r"\oxidized_copper_trapdoor.png", folder+r"\pale_hanging_moss_tip.png", folder+r"\pale_oak_leaves.png", folder+r"\pale_oak_trapdoor.png", folder+r"\pink_petals.png", folder+r"\pink_stained_glass.png", folder+r"\purple_stained_glass.png", folder+r"\red_stained_glass.png", folder+r"\slime_block.png", folder+r"\spawner.png", folder+r"\spruce_trapdoor.png", folder+r"\tinted_glass.png", folder+r"\warped_trapdoor.png", folder+r"\weathered_copper_grate.png", folder+r"\weathered_copper_trapdoor.png", folder+r"\white_stained_glass.png", folder+r"\yellow_stained_glass.png",]
 
 #CSV holders
@@ -100,6 +149,7 @@ included_files = []
 color_val = []
 images = []
 flammable = []
+block_names = []
 
 #check for image transparency and include/exclude
 for file in glob.glob(folder+"/*png"):
@@ -134,5 +184,5 @@ for file in glob.glob(folder+"/*png"):
 with open ('blocks.csv', 'w', newline='') as csv_file:
     spamwriter = csv.writer(csv_file, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
     for i in range(len(included_files)):
-        row = [included_files[i],color_val[i], images[i], flammable[i]]
+        row = [included_files[i],color_val[i], images[i], flammable[i], block_names[i]]
         spamwriter.writerow(row)
