@@ -8,7 +8,7 @@ global.fetch = jest.fn(() =>
 
 test('parse ruturns an array', async() => {
     const data = await parse();
-    expect(Array.isArray(data)).toBe(false);
+    expect(Array.isArray(data)).toBe(true);
 });
 
 test('parse returns an array of arrays', async() => {
