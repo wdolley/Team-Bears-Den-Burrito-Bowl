@@ -8,15 +8,15 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/kyliemarbury/Team-Bears-Den-Burrito-Bowl.git"
+        "url": "git+https://github.com/wdolley/Team-Bears-Den-Burrito-Bowl.git"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/kyliemarbury/Team-Bears-Den-Burrito-Bowl/issues"
+        "url": "https://github.com/wdolley/Team-Bears-Den-Burrito-Bowl/issues"
     },
-    "homepage": "https://github.com/kyliemarbury/Team-Bears-Den-Burrito-Bowl#readme",
+    "homepage": "https://github.com/wdolley/Team-Bears-Den-Burrito-Bowl#readme",
     "devDependencies": {
         "@babel/core": "^7.26.10",
         "@babel/preset-env": "^7.26.9",
